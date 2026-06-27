@@ -1,0 +1,1266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nexus Dashboard — Command Center</title>
+  <meta name="description" content="Nexus Dashboard — A futuristic analytics and management command center with real-time data visualizations." />
+  <meta name="theme-color" content="#0a0a0f" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/index.css?v=5" />
+  <link rel="stylesheet" href="css/animations.css?v=5" />
+  <link rel="stylesheet" href="css/sidebar.css?v=5" />
+  <link rel="stylesheet" href="css/header.css?v=5" />
+  <link rel="stylesheet" href="css/cards.css?v=5" />
+  <link rel="stylesheet" href="css/charts.css?v=5" />
+  <link rel="stylesheet" href="css/settings.css?v=5" />
+  <link rel="stylesheet" href="css/responsive.css?v=5" />
+</head>
+<body>
+
+  <!-- ═══ Background Orbs ═══ -->
+  <div class="bg-orbs" aria-hidden="true">
+    <div class="bg-orb bg-orb--1"></div>
+    <div class="bg-orb bg-orb--2"></div>
+    <div class="bg-orb bg-orb--3"></div>
+  </div>
+
+  <div class="app-layout">
+
+    <!-- ═══════════════════════════════════════════
+         SIDEBAR NAVIGATION
+         ═══════════════════════════════════════════ -->
+    <aside class="sidebar" aria-label="Main navigation">
+
+      <!-- Logo -->
+      <div class="sidebar__logo">
+        <div class="sidebar__logo-icon">
+          <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" fill="white"/></svg>
+        </div>
+        <span class="sidebar__logo-text">NEXUS</span>
+      </div>
+
+      <!-- Collapse toggle -->
+      <button class="sidebar__toggle" aria-label="Toggle sidebar">
+        <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+
+      <!-- Navigation -->
+      <nav class="sidebar__nav">
+        <div class="sidebar__nav-label">Main Menu</div>
+
+        <a class="sidebar__nav-item active" role="button" tabindex="0" aria-current="page" data-page="dashboard">
+          <span class="sidebar__nav-icon">
+            <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </span>
+          <span class="sidebar__nav-text">Dashboard</span>
+        </a>
+
+        <a class="sidebar__nav-item" role="button" tabindex="0" data-page="analytics">
+          <span class="sidebar__nav-icon">
+            <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+          </span>
+          <span class="sidebar__nav-text">Analytics</span>
+        </a>
+
+        <a class="sidebar__nav-item" role="button" tabindex="0" data-page="users">
+          <span class="sidebar__nav-icon">
+            <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+          </span>
+          <span class="sidebar__nav-text">Users</span>
+          <span class="sidebar__nav-badge">24</span>
+        </a>
+
+        <a class="sidebar__nav-item" role="button" tabindex="0" data-page="projects">
+          <span class="sidebar__nav-icon">
+            <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+          </span>
+          <span class="sidebar__nav-text">Projects</span>
+        </a>
+
+        <a class="sidebar__nav-item" role="button" tabindex="0" data-page="messages">
+          <span class="sidebar__nav-icon">
+            <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+          </span>
+          <span class="sidebar__nav-text">Messages</span>
+          <span class="sidebar__nav-badge">5</span>
+        </a>
+
+        <a class="sidebar__nav-item" role="button" tabindex="0" data-page="calendar">
+          <span class="sidebar__nav-icon">
+            <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          </span>
+          <span class="sidebar__nav-text">Calendar</span>
+        </a>
+
+        <div class="sidebar__nav-label" style="margin-top: 12px;">Preferences</div>
+
+        <a class="sidebar__nav-item" role="button" tabindex="0" data-page="settings">
+          <span class="sidebar__nav-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06A1.65 1.65 0 0019.32 9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+          </span>
+          <span class="sidebar__nav-text">Settings</span>
+        </a>
+      </nav>
+
+      <!-- User section -->
+      <div class="sidebar__user">
+        <div class="sidebar__user-avatar">RK</div>
+        <div class="sidebar__user-info">
+          <div class="sidebar__user-name">Rudra Kumar</div>
+          <div class="sidebar__user-role">Admin</div>
+        </div>
+        <button class="sidebar__logout" aria-label="Logout">
+          <svg viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Mobile sidebar overlay -->
+    <div class="sidebar-overlay"></div>
+
+    <!-- ═══ Main Wrapper ═══ -->
+    <div class="main-wrapper">
+
+      <!-- ═══════════════════════════════════════════
+           TOP HEADER BAR
+           ═══════════════════════════════════════════ -->
+      <header class="header">
+        <div class="header__left">
+          <!-- Mobile hamburger -->
+          <button class="header__mobile-toggle" aria-label="Open navigation">
+            <svg viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+
+          <!-- Search -->
+          <div class="header__search">
+            <span class="header__search-icon">
+              <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            </span>
+            <input type="text" class="header__search-input" placeholder="Search anything..." id="searchInput" aria-label="Search" />
+            <span class="header__search-shortcut">
+              <kbd>Ctrl</kbd><kbd>K</kbd>
+            </span>
+          </div>
+        </div>
+
+        <div class="header__right">
+          <!-- Notification bell -->
+          <button class="header__icon-btn header__notification-btn has-notifications" aria-label="Notifications">
+            <svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
+            <span class="header__notification-badge">3</span>
+          </button>
+
+          <!-- Theme toggle -->
+          <button class="header__theme-toggle" aria-label="Toggle theme">
+            <span class="header__theme-toggle-thumb">
+              <svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" fill="white"/></svg>
+            </span>
+          </button>
+
+          <!-- User -->
+          <div class="header__user">
+            <div class="header__user-avatar">RK</div>
+            <span class="header__user-name">Rudra</span>
+            <span class="header__user-chevron">
+              <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+            </span>
+          </div>
+        </div>
+      </header>
+
+      <!-- ═══════════════════════════════════════════
+           MAIN CONTENT
+           ═══════════════════════════════════════════ -->
+      <main class="main-content">
+
+        <!-- ═══════════════════════════════════════════
+             PAGE: DASHBOARD
+             ═══════════════════════════════════════════ -->
+        <section class="page-section active" data-page-section="dashboard">
+
+        <!-- Page Header -->
+        <div class="page-header animate-on-scroll stagger-1">
+          <p class="page-header__greeting">Good Afternoon, Rudra 👋</p>
+          <h1 class="page-header__title">Welcome to <span>Nexus</span></h1>
+        </div>
+
+        <!-- ═══ ROW 1: Stat Cards ═══ -->
+        <div class="dashboard-row grid-4">
+
+          <!-- Card 1: Revenue -->
+          <div class="stat-card animate-on-scroll stagger-1" id="statRevenue">
+            <div class="stat-card__header">
+              <div class="stat-card__icon stat-card__icon--cyan">
+                <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+              </div>
+              <div class="stat-card__change stat-card__change--up">
+                <svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/></svg>
+                +12.5%
+              </div>
+            </div>
+            <div class="stat-card__body">
+              <div class="stat-card__title">Total Revenue</div>
+              <div class="stat-card__value" data-counter="48759" data-prefix="$">$0</div>
+              <div class="stat-card__sparkline">
+                <canvas id="sparkline1"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2: Active Users -->
+          <div class="stat-card animate-on-scroll stagger-2" id="statUsers">
+            <div class="stat-card__header">
+              <div class="stat-card__icon stat-card__icon--violet">
+                <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+              </div>
+              <div class="stat-card__change stat-card__change--up">
+                <svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/></svg>
+                +8.3%
+              </div>
+            </div>
+            <div class="stat-card__body">
+              <div class="stat-card__title">Active Users</div>
+              <div class="stat-card__value" data-counter="2845">0</div>
+              <div class="stat-card__sparkline">
+                <canvas id="sparkline2"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3: Total Projects -->
+          <div class="stat-card animate-on-scroll stagger-3" id="statProjects">
+            <div class="stat-card__header">
+              <div class="stat-card__icon stat-card__icon--magenta">
+                <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+              </div>
+              <div class="stat-card__change stat-card__change--up">
+                <svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/></svg>
+                +3.2%
+              </div>
+            </div>
+            <div class="stat-card__body">
+              <div class="stat-card__title">Total Projects</div>
+              <div class="stat-card__value" data-counter="184">0</div>
+              <div class="stat-card__sparkline">
+                <canvas id="sparkline3"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 4: System Uptime -->
+          <div class="stat-card animate-on-scroll stagger-4" id="statUptime">
+            <div class="stat-card__header">
+              <div class="stat-card__icon stat-card__icon--green">
+                <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+              </div>
+              <div class="stat-card__change stat-card__change--up">
+                <svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/></svg>
+                +0.1%
+              </div>
+            </div>
+            <div class="stat-card__body">
+              <div class="stat-card__title">System Uptime</div>
+              <div class="stat-card__value" data-counter="99.98" data-suffix="%" data-decimals="2">0%</div>
+              <div class="stat-card__sparkline">
+                <canvas id="sparkline4"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ═══ ROW 2: Charts ═══ -->
+        <div class="dashboard-row grid-60-40">
+
+          <!-- Revenue Chart -->
+          <div class="content-card animate-on-scroll stagger-2">
+            <div class="content-card__header">
+              <h2 class="content-card__title">Revenue Overview</h2>
+              <div class="content-card__actions">
+                <div class="toggle-tabs">
+                  <button class="toggle-tab" data-range="weekly">Weekly</button>
+                  <button class="toggle-tab active" data-range="monthly">Monthly</button>
+                  <button class="toggle-tab" data-range="yearly">Yearly</button>
+                </div>
+              </div>
+            </div>
+            <div class="chart-container revenue-chart">
+              <canvas id="revenueChart"></canvas>
+            </div>
+          </div>
+
+          <!-- Traffic Sources -->
+          <div class="content-card animate-on-scroll stagger-3">
+            <div class="content-card__header">
+              <h2 class="content-card__title">Traffic Sources</h2>
+              <a class="view-all">Details →</a>
+            </div>
+            <div class="doughnut-container">
+              <div class="doughnut-chart">
+                <canvas id="trafficChart"></canvas>
+                <div class="doughnut-center">
+                  <span class="doughnut-center__value" data-counter="28450" data-prefix="">0</span>
+                  <span class="doughnut-center__label">Total Visits</span>
+                </div>
+              </div>
+              <div class="chart-legend">
+                <div class="chart-legend__item">
+                  <span class="chart-legend__dot chart-legend__dot--cyan"></span>
+                  Direct <span class="chart-legend__value">35%</span>
+                </div>
+                <div class="chart-legend__item">
+                  <span class="chart-legend__dot chart-legend__dot--violet"></span>
+                  Organic <span class="chart-legend__value">28%</span>
+                </div>
+                <div class="chart-legend__item">
+                  <span class="chart-legend__dot chart-legend__dot--magenta"></span>
+                  Referral <span class="chart-legend__value">22%</span>
+                </div>
+                <div class="chart-legend__item">
+                  <span class="chart-legend__dot chart-legend__dot--green"></span>
+                  Social <span class="chart-legend__value">15%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ═══ ROW 3: Mixed Content ═══ -->
+        <div class="dashboard-row grid-3">
+
+          <!-- Recent Activity Feed -->
+          <div class="content-card animate-on-scroll stagger-1">
+            <div class="content-card__header">
+              <h2 class="content-card__title">Recent Activity</h2>
+              <a class="view-all">View All →</a>
+            </div>
+            <div class="activity-feed">
+              <div class="activity-item">
+                <div class="activity-item__icon activity-item__icon--user">👤</div>
+                <div class="activity-item__content">
+                  <p class="activity-item__text"><strong>Sarah Chen</strong> joined the team</p>
+                  <span class="activity-item__time">2 minutes ago</span>
+                </div>
+              </div>
+              <div class="activity-item">
+                <div class="activity-item__icon activity-item__icon--upload">📁</div>
+                <div class="activity-item__content">
+                  <p class="activity-item__text"><strong>Alex Rivera</strong> uploaded design assets</p>
+                  <span class="activity-item__time">15 minutes ago</span>
+                </div>
+              </div>
+              <div class="activity-item">
+                <div class="activity-item__icon activity-item__icon--task">✅</div>
+                <div class="activity-item__content">
+                  <p class="activity-item__text"><strong>Maya Patel</strong> completed sprint review</p>
+                  <span class="activity-item__time">1 hour ago</span>
+                </div>
+              </div>
+              <div class="activity-item">
+                <div class="activity-item__icon activity-item__icon--payment">💳</div>
+                <div class="activity-item__content">
+                  <p class="activity-item__text"><strong>Payment</strong> of $2,400 received</p>
+                  <span class="activity-item__time">3 hours ago</span>
+                </div>
+              </div>
+              <div class="activity-item">
+                <div class="activity-item__icon activity-item__icon--user">👤</div>
+                <div class="activity-item__content">
+                  <p class="activity-item__text"><strong>James Wilson</strong> updated profile</p>
+                  <span class="activity-item__time">5 hours ago</span>
+                </div>
+              </div>
+              <div class="activity-item">
+                <div class="activity-item__icon activity-item__icon--task">✅</div>
+                <div class="activity-item__content">
+                  <p class="activity-item__text"><strong>API v2.3</strong> deployed successfully</p>
+                  <span class="activity-item__time">8 hours ago</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Top Projects Table -->
+          <div class="content-card animate-on-scroll stagger-2">
+            <div class="content-card__header">
+              <h2 class="content-card__title">Top Projects</h2>
+              <a class="view-all">See All →</a>
+            </div>
+            <table class="projects-table">
+              <thead>
+                <tr>
+                  <th>Project</th>
+                  <th>Status</th>
+                  <th>Progress</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="projects-table__name">Nebula CRM</td>
+                  <td><span class="badge badge--success">Active</span></td>
+                  <td class="projects-table__progress">
+                    <div class="progress-bar">
+                      <div class="progress-bar__fill" data-width="85%" style="width: 85%;"></div>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="projects-table__name">Quantum API</td>
+                  <td><span class="badge badge--info">Active</span></td>
+                  <td class="projects-table__progress">
+                    <div class="progress-bar">
+                      <div class="progress-bar__fill" data-width="62%" style="width: 62%;"></div>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="projects-table__name">Aurora UI Kit</td>
+                  <td><span class="badge badge--warning">On Hold</span></td>
+                  <td class="projects-table__progress">
+                    <div class="progress-bar">
+                      <div class="progress-bar__fill" data-width="45%" style="width: 45%;"></div>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="projects-table__name">Vortex Analytics</td>
+                  <td><span class="badge badge--success">Active</span></td>
+                  <td class="projects-table__progress">
+                    <div class="progress-bar">
+                      <div class="progress-bar__fill" data-width="78%" style="width: 78%;"></div>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="projects-table__name">Pulse Monitor</td>
+                  <td><span class="badge badge--violet">Completed</span></td>
+                  <td class="projects-table__progress">
+                    <div class="progress-bar">
+                      <div class="progress-bar__fill" data-width="100%" style="width: 100%;"></div>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Performance Gauge -->
+          <div class="content-card animate-on-scroll stagger-3">
+            <div class="content-card__header">
+              <h2 class="content-card__title">Performance</h2>
+              <a class="view-all">Report →</a>
+            </div>
+            <div class="performance-gauge">
+              <div class="gauge-ring">
+                <svg viewBox="0 0 170 170">
+                  <defs>
+                    <linearGradient id="gaugeGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                      <stop offset="0%" stop-color="#00e5ff" />
+                      <stop offset="50%" stop-color="#7c3aed" />
+                      <stop offset="100%" stop-color="#e040fb" />
+                    </linearGradient>
+                  </defs>
+                  <circle class="gauge-ring__bg" cx="85" cy="85" r="75" />
+                  <circle class="gauge-ring__fill" cx="85" cy="85" r="75" />
+                </svg>
+                <div class="gauge-ring__label">
+                  <span class="gauge-ring__value" data-counter="87" data-suffix="">0</span>
+                  <span class="gauge-ring__text">of 100</span>
+                </div>
+              </div>
+              <div class="performance-metrics">
+                <div class="performance-metric">
+                  <span class="performance-metric__label">Speed</span>
+                  <div class="performance-metric__bar">
+                    <div class="progress-bar">
+                      <div class="progress-bar__fill" data-width="92%" style="width: 92%;"></div>
+                    </div>
+                  </div>
+                  <span class="performance-metric__value">92%</span>
+                </div>
+                <div class="performance-metric">
+                  <span class="performance-metric__label">Reliability</span>
+                  <div class="performance-metric__bar">
+                    <div class="progress-bar">
+                      <div class="progress-bar__fill" data-width="88%" style="width: 88%;"></div>
+                    </div>
+                  </div>
+                  <span class="performance-metric__value">88%</span>
+                </div>
+                <div class="performance-metric">
+                  <span class="performance-metric__label">Efficiency</span>
+                  <div class="performance-metric__bar">
+                    <div class="progress-bar">
+                      <div class="progress-bar__fill" data-width="81%" style="width: 81%;"></div>
+                    </div>
+                  </div>
+                  <span class="performance-metric__value">81%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ═══ ROW 4: Bottom Section ═══ -->
+        <div class="dashboard-row grid-2">
+
+          <!-- Regional Stats -->
+          <div class="content-card animate-on-scroll stagger-1">
+            <div class="content-card__header">
+              <h2 class="content-card__title">User Distribution</h2>
+              <a class="view-all">Map View →</a>
+            </div>
+            <div class="regional-stats">
+              <div class="regional-item">
+                <span class="regional-item__flag">🇺🇸</span>
+                <div class="regional-item__info">
+                  <div class="regional-item__country">United States</div>
+                  <div class="regional-item__bar">
+                    <div class="progress-bar">
+                      <div class="progress-bar__fill" data-width="78%" style="width: 78%;"></div>
+                    </div>
+                  </div>
+                </div>
+                <span class="regional-item__users">1,245</span>
+              </div>
+              <div class="regional-item">
+                <span class="regional-item__flag">🇬🇧</span>
+                <div class="regional-item__info">
+                  <div class="regional-item__country">United Kingdom</div>
+                  <div class="regional-item__bar">
+                    <div class="progress-bar">
+                      <div class="progress-bar__fill" data-width="56%" style="width: 56%;"></div>
+                    </div>
+                  </div>
+                </div>
+                <span class="regional-item__users">842</span>
+              </div>
+              <div class="regional-item">
+                <span class="regional-item__flag">🇮🇳</span>
+                <div class="regional-item__info">
+                  <div class="regional-item__country">India</div>
+                  <div class="regional-item__bar">
+                    <div class="progress-bar">
+                      <div class="progress-bar__fill" data-width="48%" style="width: 48%;"></div>
+                    </div>
+                  </div>
+                </div>
+                <span class="regional-item__users">720</span>
+              </div>
+              <div class="regional-item">
+                <span class="regional-item__flag">🇩🇪</span>
+                <div class="regional-item__info">
+                  <div class="regional-item__country">Germany</div>
+                  <div class="regional-item__bar">
+                    <div class="progress-bar">
+                      <div class="progress-bar__fill" data-width="35%" style="width: 35%;"></div>
+                    </div>
+                  </div>
+                </div>
+                <span class="regional-item__users">528</span>
+              </div>
+              <div class="regional-item">
+                <span class="regional-item__flag">🇯🇵</span>
+                <div class="regional-item__info">
+                  <div class="regional-item__country">Japan</div>
+                  <div class="regional-item__bar">
+                    <div class="progress-bar">
+                      <div class="progress-bar__fill" data-width="28%" style="width: 28%;"></div>
+                    </div>
+                  </div>
+                </div>
+                <span class="regional-item__users">410</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Team Members -->
+          <div class="content-card animate-on-scroll stagger-2">
+            <div class="content-card__header">
+              <h2 class="content-card__title">Team Members</h2>
+              <a class="view-all">Manage →</a>
+            </div>
+            <div class="team-grid">
+              <div class="team-card">
+                <div class="team-card__avatar team-card__avatar--1">
+                  SC
+                  <span class="team-card__status status-dot--online"></span>
+                </div>
+                <div class="team-card__name">Sarah Chen</div>
+                <div class="team-card__role">Lead Designer</div>
+              </div>
+              <div class="team-card">
+                <div class="team-card__avatar team-card__avatar--2">
+                  AR
+                  <span class="team-card__status status-dot--online"></span>
+                </div>
+                <div class="team-card__name">Alex Rivera</div>
+                <div class="team-card__role">Full-Stack Dev</div>
+              </div>
+              <div class="team-card">
+                <div class="team-card__avatar team-card__avatar--3">
+                  MP
+                  <span class="team-card__status status-dot--away"></span>
+                </div>
+                <div class="team-card__name">Maya Patel</div>
+                <div class="team-card__role">PM</div>
+              </div>
+              <div class="team-card">
+                <div class="team-card__avatar team-card__avatar--4">
+                  JW
+                  <span class="team-card__status status-dot--online"></span>
+                </div>
+                <div class="team-card__name">James Wilson</div>
+                <div class="team-card__role">DevOps Eng</div>
+              </div>
+              <div class="team-card">
+                <div class="team-card__avatar team-card__avatar--5">
+                  LT
+                  <span class="team-card__status status-dot--offline"></span>
+                </div>
+                <div class="team-card__name">Lena Torres</div>
+                <div class="team-card__role">Data Scientist</div>
+              </div>
+              <div class="team-card">
+                <div class="team-card__avatar team-card__avatar--6">
+                  DK
+                  <span class="team-card__status status-dot--online"></span>
+                </div>
+                <div class="team-card__name">David Kim</div>
+                <div class="team-card__role">QA Lead</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        </section>
+        <!-- end PAGE: DASHBOARD -->
+
+
+        <!-- ═══════════════════════════════════════════
+             PAGE: ANALYTICS
+             ═══════════════════════════════════════════ -->
+        <section class="page-section" data-page-section="analytics">
+          <div class="page-header">
+            <p class="page-header__greeting">Performance Overview</p>
+            <h1 class="page-header__title"><span>Analytics</span></h1>
+          </div>
+
+          <!-- Analytics Stats Row -->
+          <div class="dashboard-row grid-4">
+            <div class="stat-card">
+              <div class="stat-card__header">
+                <div class="stat-card__icon stat-card__icon--cyan">
+                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                </div>
+                <div class="stat-card__change stat-card__change--up">+18.2%</div>
+              </div>
+              <div class="stat-card__body">
+                <div class="stat-card__title">Avg. Session</div>
+                <div class="stat-card__value">4m 32s</div>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-card__header">
+                <div class="stat-card__icon stat-card__icon--violet">
+                  <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                </div>
+                <div class="stat-card__change stat-card__change--up">+5.7%</div>
+              </div>
+              <div class="stat-card__body">
+                <div class="stat-card__title">Bounce Rate</div>
+                <div class="stat-card__value">32.4%</div>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-card__header">
+                <div class="stat-card__icon stat-card__icon--magenta">
+                  <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                </div>
+                <div class="stat-card__change stat-card__change--up">+22.1%</div>
+              </div>
+              <div class="stat-card__body">
+                <div class="stat-card__title">Page Views</div>
+                <div class="stat-card__value">128,450</div>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-card__header">
+                <div class="stat-card__icon stat-card__icon--green">
+                  <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+                </div>
+                <div class="stat-card__change stat-card__change--up">+9.4%</div>
+              </div>
+              <div class="stat-card__body">
+                <div class="stat-card__title">Conversion Rate</div>
+                <div class="stat-card__value">3.28%</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Analytics Chart -->
+          <div class="dashboard-row">
+            <div class="content-card">
+              <div class="content-card__header">
+                <h2 class="content-card__title">Visitor Analytics</h2>
+                <a class="view-all">Export →</a>
+              </div>
+              <div class="chart-container revenue-chart">
+                <canvas id="analyticsChart"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <!-- Analytics Breakdown -->
+          <div class="dashboard-row grid-2">
+            <div class="content-card">
+              <div class="content-card__header">
+                <h2 class="content-card__title">Top Pages</h2>
+              </div>
+              <table class="projects-table">
+                <thead><tr><th>Page</th><th>Views</th><th>Bounce Rate</th></tr></thead>
+                <tbody>
+                  <tr><td class="projects-table__name">/dashboard</td><td>24,521</td><td><span class="badge badge--success">18%</span></td></tr>
+                  <tr><td class="projects-table__name">/analytics</td><td>18,342</td><td><span class="badge badge--success">22%</span></td></tr>
+                  <tr><td class="projects-table__name">/products</td><td>12,876</td><td><span class="badge badge--warning">35%</span></td></tr>
+                  <tr><td class="projects-table__name">/pricing</td><td>9,443</td><td><span class="badge badge--warning">41%</span></td></tr>
+                  <tr><td class="projects-table__name">/blog</td><td>7,218</td><td><span class="badge badge--danger">52%</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="content-card">
+              <div class="content-card__header">
+                <h2 class="content-card__title">Device Breakdown</h2>
+              </div>
+              <div class="doughnut-container">
+                <div class="doughnut-chart">
+                  <canvas id="deviceChart"></canvas>
+                  <div class="doughnut-center">
+                    <span class="doughnut-center__value">100%</span>
+                    <span class="doughnut-center__label">All Devices</span>
+                  </div>
+                </div>
+                <div class="chart-legend">
+                  <div class="chart-legend__item">
+                    <span class="chart-legend__dot chart-legend__dot--cyan"></span>
+                    Desktop <span class="chart-legend__value">58%</span>
+                  </div>
+                  <div class="chart-legend__item">
+                    <span class="chart-legend__dot chart-legend__dot--violet"></span>
+                    Mobile <span class="chart-legend__value">32%</span>
+                  </div>
+                  <div class="chart-legend__item">
+                    <span class="chart-legend__dot chart-legend__dot--magenta"></span>
+                    Tablet <span class="chart-legend__value">10%</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+        <!-- ═══════════════════════════════════════════
+             PAGE: USERS
+             ═══════════════════════════════════════════ -->
+        <section class="page-section" data-page-section="users">
+          <div class="page-header">
+            <p class="page-header__greeting">Manage your team</p>
+            <h1 class="page-header__title"><span>Users</span></h1>
+          </div>
+
+          <div class="dashboard-row grid-4">
+            <div class="stat-card">
+              <div class="stat-card__header">
+                <div class="stat-card__icon stat-card__icon--cyan">
+                  <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+                </div>
+              </div>
+              <div class="stat-card__body">
+                <div class="stat-card__title">Total Users</div>
+                <div class="stat-card__value">2,845</div>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-card__header">
+                <div class="stat-card__icon stat-card__icon--green">
+                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+                </div>
+              </div>
+              <div class="stat-card__body">
+                <div class="stat-card__title">Active Now</div>
+                <div class="stat-card__value">482</div>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-card__header">
+                <div class="stat-card__icon stat-card__icon--violet">
+                  <svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>
+                </div>
+              </div>
+              <div class="stat-card__body">
+                <div class="stat-card__title">New This Month</div>
+                <div class="stat-card__value">124</div>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-card__header">
+                <div class="stat-card__icon stat-card__icon--magenta">
+                  <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                </div>
+              </div>
+              <div class="stat-card__body">
+                <div class="stat-card__title">Verified</div>
+                <div class="stat-card__value">2,412</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Users Table -->
+          <div class="dashboard-row">
+            <div class="content-card">
+              <div class="content-card__header">
+                <h2 class="content-card__title">All Users</h2>
+                <a class="view-all">Add User +</a>
+              </div>
+              <table class="projects-table">
+                <thead><tr><th>User</th><th>Email</th><th>Role</th><th>Status</th></tr></thead>
+                <tbody>
+                  <tr><td class="projects-table__name">Sarah Chen</td><td>sarah@nexus.io</td><td>Lead Designer</td><td><span class="badge badge--success">Active</span></td></tr>
+                  <tr><td class="projects-table__name">Alex Rivera</td><td>alex@nexus.io</td><td>Full-Stack Dev</td><td><span class="badge badge--success">Active</span></td></tr>
+                  <tr><td class="projects-table__name">Maya Patel</td><td>maya@nexus.io</td><td>PM</td><td><span class="badge badge--warning">Away</span></td></tr>
+                  <tr><td class="projects-table__name">James Wilson</td><td>james@nexus.io</td><td>DevOps Eng</td><td><span class="badge badge--success">Active</span></td></tr>
+                  <tr><td class="projects-table__name">Lena Torres</td><td>lena@nexus.io</td><td>Data Scientist</td><td><span class="badge badge--danger">Offline</span></td></tr>
+                  <tr><td class="projects-table__name">David Kim</td><td>david@nexus.io</td><td>QA Lead</td><td><span class="badge badge--success">Active</span></td></tr>
+                  <tr><td class="projects-table__name">Priya Sharma</td><td>priya@nexus.io</td><td>Frontend Dev</td><td><span class="badge badge--success">Active</span></td></tr>
+                  <tr><td class="projects-table__name">Marcus Lee</td><td>marcus@nexus.io</td><td>Backend Dev</td><td><span class="badge badge--warning">Away</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+
+        <!-- ═══════════════════════════════════════════
+             PAGE: PROJECTS
+             ═══════════════════════════════════════════ -->
+        <section class="page-section" data-page-section="projects">
+          <div class="page-header">
+            <p class="page-header__greeting">Track your work</p>
+            <h1 class="page-header__title"><span>Projects</span></h1>
+          </div>
+
+          <div class="dashboard-row grid-3">
+            <!-- Project Card 1 -->
+            <div class="content-card hover-lift">
+              <div class="content-card__header">
+                <h2 class="content-card__title">Nebula CRM</h2>
+                <span class="badge badge--success">Active</span>
+              </div>
+              <p style="font-size:13px;color:var(--text-secondary);margin-bottom:16px;">Customer relationship management platform with AI-powered insights and automation workflows.</p>
+              <div class="progress-bar" style="margin-bottom:12px;">
+                <div class="progress-bar__fill" style="width:85%;"></div>
+              </div>
+              <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--text-muted);">
+                <span>Progress: 85%</span>
+                <span>Due: Jul 15</span>
+              </div>
+            </div>
+            <!-- Project Card 2 -->
+            <div class="content-card hover-lift">
+              <div class="content-card__header">
+                <h2 class="content-card__title">Quantum API</h2>
+                <span class="badge badge--info">In Progress</span>
+              </div>
+              <p style="font-size:13px;color:var(--text-secondary);margin-bottom:16px;">High-performance RESTful API gateway with rate limiting, caching, and real-time monitoring.</p>
+              <div class="progress-bar" style="margin-bottom:12px;">
+                <div class="progress-bar__fill" style="width:62%;"></div>
+              </div>
+              <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--text-muted);">
+                <span>Progress: 62%</span>
+                <span>Due: Aug 01</span>
+              </div>
+            </div>
+            <!-- Project Card 3 -->
+            <div class="content-card hover-lift">
+              <div class="content-card__header">
+                <h2 class="content-card__title">Aurora UI Kit</h2>
+                <span class="badge badge--warning">On Hold</span>
+              </div>
+              <p style="font-size:13px;color:var(--text-secondary);margin-bottom:16px;">Premium design system and component library built with accessibility and theming in mind.</p>
+              <div class="progress-bar" style="margin-bottom:12px;">
+                <div class="progress-bar__fill" style="width:45%;"></div>
+              </div>
+              <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--text-muted);">
+                <span>Progress: 45%</span>
+                <span>Due: Sep 10</span>
+              </div>
+            </div>
+            <!-- Project Card 4 -->
+            <div class="content-card hover-lift">
+              <div class="content-card__header">
+                <h2 class="content-card__title">Vortex Analytics</h2>
+                <span class="badge badge--success">Active</span>
+              </div>
+              <p style="font-size:13px;color:var(--text-secondary);margin-bottom:16px;">Real-time analytics dashboard for tracking user behavior, conversions, and KPIs.</p>
+              <div class="progress-bar" style="margin-bottom:12px;">
+                <div class="progress-bar__fill" style="width:78%;"></div>
+              </div>
+              <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--text-muted);">
+                <span>Progress: 78%</span>
+                <span>Due: Jul 28</span>
+              </div>
+            </div>
+            <!-- Project Card 5 -->
+            <div class="content-card hover-lift">
+              <div class="content-card__header">
+                <h2 class="content-card__title">Pulse Monitor</h2>
+                <span class="badge badge--violet">Completed</span>
+              </div>
+              <p style="font-size:13px;color:var(--text-secondary);margin-bottom:16px;">Server health monitoring system with alerting, incident management, and SLA tracking.</p>
+              <div class="progress-bar" style="margin-bottom:12px;">
+                <div class="progress-bar__fill" style="width:100%;"></div>
+              </div>
+              <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--text-muted);">
+                <span>Progress: 100%</span>
+                <span>Completed ✓</span>
+              </div>
+            </div>
+            <!-- Project Card 6 -->
+            <div class="content-card hover-lift">
+              <div class="content-card__header">
+                <h2 class="content-card__title">Helix Mobile</h2>
+                <span class="badge badge--info">In Progress</span>
+              </div>
+              <p style="font-size:13px;color:var(--text-secondary);margin-bottom:16px;">Cross-platform mobile app built with React Native for iOS and Android deployment.</p>
+              <div class="progress-bar" style="margin-bottom:12px;">
+                <div class="progress-bar__fill" style="width:35%;"></div>
+              </div>
+              <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--text-muted);">
+                <span>Progress: 35%</span>
+                <span>Due: Oct 20</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+        <!-- ═══════════════════════════════════════════
+             PAGE: MESSAGES
+             ═══════════════════════════════════════════ -->
+        <section class="page-section" data-page-section="messages">
+          <div class="page-header">
+            <p class="page-header__greeting">Stay connected</p>
+            <h1 class="page-header__title"><span>Messages</span></h1>
+          </div>
+
+          <div class="dashboard-row grid-60-40">
+            <!-- Message List -->
+            <div class="content-card">
+              <div class="content-card__header">
+                <h2 class="content-card__title">Inbox</h2>
+                <span class="badge badge--info">5 new</span>
+              </div>
+              <div class="activity-feed">
+                <div class="activity-item" style="background:rgba(0,229,255,0.04);border-radius:12px;padding:14px;">
+                  <div class="activity-item__icon" style="background:linear-gradient(135deg,#00e5ff,#0091ea);color:white;font-weight:700;font-size:12px;display:flex;align-items:center;justify-content:center;">SC</div>
+                  <div class="activity-item__content">
+                    <p class="activity-item__text"><strong>Sarah Chen</strong> — Updated the design for the new landing page. Can you review the mockups?</p>
+                    <span class="activity-item__time">2 minutes ago · <span style="color:var(--accent-cyan)">Unread</span></span>
+                  </div>
+                </div>
+                <div class="activity-item" style="padding:14px;">
+                  <div class="activity-item__icon" style="background:linear-gradient(135deg,#7c3aed,#a855f7);color:white;font-weight:700;font-size:12px;display:flex;align-items:center;justify-content:center;">AR</div>
+                  <div class="activity-item__content">
+                    <p class="activity-item__text"><strong>Alex Rivera</strong> — The API endpoints are ready for integration testing. Docs updated too.</p>
+                    <span class="activity-item__time">45 minutes ago · <span style="color:var(--accent-cyan)">Unread</span></span>
+                  </div>
+                </div>
+                <div class="activity-item" style="padding:14px;">
+                  <div class="activity-item__icon" style="background:linear-gradient(135deg,#e040fb,#f06292);color:white;font-weight:700;font-size:12px;display:flex;align-items:center;justify-content:center;">MP</div>
+                  <div class="activity-item__content">
+                    <p class="activity-item__text"><strong>Maya Patel</strong> — Sprint planning meeting scheduled for tomorrow at 10:00 AM.</p>
+                    <span class="activity-item__time">2 hours ago</span>
+                  </div>
+                </div>
+                <div class="activity-item" style="padding:14px;">
+                  <div class="activity-item__icon" style="background:linear-gradient(135deg,#22c55e,#10b981);color:white;font-weight:700;font-size:12px;display:flex;align-items:center;justify-content:center;">JW</div>
+                  <div class="activity-item__content">
+                    <p class="activity-item__text"><strong>James Wilson</strong> — Deployment pipeline fixed. All staging environments are green now.</p>
+                    <span class="activity-item__time">5 hours ago</span>
+                  </div>
+                </div>
+                <div class="activity-item" style="padding:14px;">
+                  <div class="activity-item__icon" style="background:linear-gradient(135deg,#f59e0b,#f97316);color:white;font-weight:700;font-size:12px;display:flex;align-items:center;justify-content:center;">DK</div>
+                  <div class="activity-item__content">
+                    <p class="activity-item__text"><strong>David Kim</strong> — QA report for v2.3 is ready. Found 2 minor issues, already patched.</p>
+                    <span class="activity-item__time">Yesterday</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Channels -->
+            <div class="content-card">
+              <div class="content-card__header">
+                <h2 class="content-card__title">Channels</h2>
+                <a class="view-all">New +</a>
+              </div>
+              <div class="activity-feed">
+                <div class="activity-item">
+                  <div class="activity-item__icon" style="background:rgba(0,229,255,0.12);font-size:16px;display:flex;align-items:center;justify-content:center;">#</div>
+                  <div class="activity-item__content">
+                    <p class="activity-item__text"><strong># general</strong></p>
+                    <span class="activity-item__time">42 members</span>
+                  </div>
+                </div>
+                <div class="activity-item">
+                  <div class="activity-item__icon" style="background:rgba(124,58,237,0.12);font-size:16px;display:flex;align-items:center;justify-content:center;">#</div>
+                  <div class="activity-item__content">
+                    <p class="activity-item__text"><strong># engineering</strong></p>
+                    <span class="activity-item__time">18 members</span>
+                  </div>
+                </div>
+                <div class="activity-item">
+                  <div class="activity-item__icon" style="background:rgba(224,64,251,0.12);font-size:16px;display:flex;align-items:center;justify-content:center;">#</div>
+                  <div class="activity-item__content">
+                    <p class="activity-item__text"><strong># design</strong></p>
+                    <span class="activity-item__time">12 members</span>
+                  </div>
+                </div>
+                <div class="activity-item">
+                  <div class="activity-item__icon" style="background:rgba(34,197,94,0.12);font-size:16px;display:flex;align-items:center;justify-content:center;">#</div>
+                  <div class="activity-item__content">
+                    <p class="activity-item__text"><strong># deployments</strong></p>
+                    <span class="activity-item__time">8 members</span>
+                  </div>
+                </div>
+                <div class="activity-item">
+                  <div class="activity-item__icon" style="background:rgba(245,158,11,0.12);font-size:16px;display:flex;align-items:center;justify-content:center;">#</div>
+                  <div class="activity-item__content">
+                    <p class="activity-item__text"><strong># random</strong></p>
+                    <span class="activity-item__time">42 members</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+        <!-- ═══════════════════════════════════════════
+             PAGE: CALENDAR
+             ═══════════════════════════════════════════ -->
+        <section class="page-section" data-page-section="calendar">
+          <div class="page-header">
+            <p class="page-header__greeting">Your schedule</p>
+            <h1 class="page-header__title"><span>Calendar</span></h1>
+          </div>
+
+          <div class="dashboard-row grid-60-40">
+            <!-- Today's schedule -->
+            <div class="content-card">
+              <div class="content-card__header">
+                <h2 class="content-card__title">Today's Schedule</h2>
+                <span class="badge badge--info">June 25, 2026</span>
+              </div>
+              <div class="activity-feed">
+                <div class="activity-item">
+                  <div class="activity-item__icon" style="background:rgba(0,229,255,0.12);font-size:14px;display:flex;align-items:center;justify-content:center;">🔵</div>
+                  <div class="activity-item__content">
+                    <p class="activity-item__text"><strong>Standup Meeting</strong> — Daily sync with the engineering team</p>
+                    <span class="activity-item__time">9:00 AM — 9:15 AM</span>
+                  </div>
+                </div>
+                <div class="activity-item">
+                  <div class="activity-item__icon" style="background:rgba(124,58,237,0.12);font-size:14px;display:flex;align-items:center;justify-content:center;">🟣</div>
+                  <div class="activity-item__content">
+                    <p class="activity-item__text"><strong>Design Review</strong> — Review Aurora UI Kit mockups with Sarah</p>
+                    <span class="activity-item__time">10:00 AM — 11:00 AM</span>
+                  </div>
+                </div>
+                <div class="activity-item">
+                  <div class="activity-item__icon" style="background:rgba(34,197,94,0.12);font-size:14px;display:flex;align-items:center;justify-content:center;">🟢</div>
+                  <div class="activity-item__content">
+                    <p class="activity-item__text"><strong>Lunch with Team</strong> — Team building at the rooftop café</p>
+                    <span class="activity-item__time">12:30 PM — 1:30 PM</span>
+                  </div>
+                </div>
+                <div class="activity-item">
+                  <div class="activity-item__icon" style="background:rgba(245,158,11,0.12);font-size:14px;display:flex;align-items:center;justify-content:center;">🟠</div>
+                  <div class="activity-item__content">
+                    <p class="activity-item__text"><strong>Sprint Planning</strong> — Plan next 2-week sprint with product</p>
+                    <span class="activity-item__time">2:00 PM — 3:30 PM</span>
+                  </div>
+                </div>
+                <div class="activity-item">
+                  <div class="activity-item__icon" style="background:rgba(224,64,251,0.12);font-size:14px;display:flex;align-items:center;justify-content:center;">🔴</div>
+                  <div class="activity-item__content">
+                    <p class="activity-item__text"><strong>Client Call</strong> — Progress update with Acme Corp stakeholders</p>
+                    <span class="activity-item__time">4:00 PM — 4:45 PM</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Upcoming -->
+            <div class="content-card">
+              <div class="content-card__header">
+                <h2 class="content-card__title">Upcoming</h2>
+                <a class="view-all">View All →</a>
+              </div>
+              <div class="activity-feed">
+                <div class="activity-item">
+                  <div class="activity-item__content">
+                    <p class="activity-item__text"><strong>Code Freeze</strong> — v2.4 release branch cutoff</p>
+                    <span class="activity-item__time">Tomorrow, 6:00 PM</span>
+                  </div>
+                </div>
+                <div class="activity-item">
+                  <div class="activity-item__content">
+                    <p class="activity-item__text"><strong>QA Testing</strong> — Full regression test cycle for v2.4</p>
+                    <span class="activity-item__time">Jun 27, 10:00 AM</span>
+                  </div>
+                </div>
+                <div class="activity-item">
+                  <div class="activity-item__content">
+                    <p class="activity-item__text"><strong>Team Retro</strong> — Sprint retrospective & improvements</p>
+                    <span class="activity-item__time">Jun 28, 3:00 PM</span>
+                  </div>
+                </div>
+                <div class="activity-item">
+                  <div class="activity-item__content">
+                    <p class="activity-item__text"><strong>v2.4 Launch</strong> — Production deployment</p>
+                    <span class="activity-item__time">Jun 30, 9:00 AM</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+        <!-- ═══════════════════════════════════════════
+             PAGE: SETTINGS
+             ═══════════════════════════════════════════ -->
+        <section class="page-section" data-page-section="settings">
+          <div class="page-header">
+            <p class="page-header__greeting">Customize your workspace</p>
+            <h1 class="page-header__title"><span>Settings</span></h1>
+          </div>
+
+          <div class="dashboard-row grid-2">
+            <!-- Profile -->
+            <div class="content-card">
+              <div class="content-card__header">
+                <h2 class="content-card__title">Profile Settings</h2>
+              </div>
+              
+              <div class="settings-profile-header">
+                <div class="settings-avatar">
+                  RK
+                  <div class="settings-avatar__overlay">
+                    <svg class="settings-avatar__icon" viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+                  </div>
+                </div>
+                <div>
+                  <div class="settings-profile-info__name">Rudra Kumar</div>
+                  <div class="settings-profile-info__role">rudra@nexus.io · Admin</div>
+                </div>
+              </div>
+
+              <div class="settings-form">
+                <div class="settings-form-group">
+                  <label class="settings-label">Full Name</label>
+                  <input type="text" class="settings-input" value="Rudra Kumar" />
+                </div>
+                <div class="settings-form-group">
+                  <label class="settings-label">Email Address</label>
+                  <input type="email" class="settings-input" value="rudra@nexus.io" />
+                </div>
+                <div class="settings-form-group">
+                  <label class="settings-label">Role</label>
+                  <input type="text" class="settings-input" value="Administrator" readonly />
+                </div>
+              </div>
+
+              <div class="settings-actions">
+                <button class="btn btn--primary">Save Changes</button>
+                <button class="btn btn--secondary">Cancel</button>
+              </div>
+            </div>
+
+            <!-- Preferences -->
+            <div class="content-card">
+              <div class="content-card__header">
+                <h2 class="content-card__title">Preferences</h2>
+              </div>
+              
+              <div class="preferences-list">
+                <div class="preference-item">
+                  <div>
+                    <div class="preference-info__title">Email Notifications</div>
+                    <div class="preference-info__desc">Receive email alerts for important updates</div>
+                  </div>
+                  <div class="header__theme-toggle" style="position:static;">
+                    <span class="header__theme-toggle-thumb"></span>
+                  </div>
+                </div>
+                
+                <div class="preference-item">
+                  <div>
+                    <div class="preference-info__title">Push Notifications</div>
+                    <div class="preference-info__desc">Get real-time push notifications</div>
+                  </div>
+                  <div class="header__theme-toggle light" style="position:static;">
+                    <span class="header__theme-toggle-thumb"></span>
+                  </div>
+                </div>
+                
+                <div class="preference-item">
+                  <div>
+                    <div class="preference-info__title">Two-Factor Auth</div>
+                    <div class="preference-info__desc">Add extra security to your account</div>
+                  </div>
+                  <div class="header__theme-toggle" style="position:static;">
+                    <span class="header__theme-toggle-thumb"></span>
+                  </div>
+                </div>
+                
+                <div class="preference-item">
+                  <div>
+                    <div class="preference-info__title">Dark Mode</div>
+                    <div class="preference-info__desc">Always enabled for optimal experience</div>
+                  </div>
+                  <div class="header__theme-toggle" style="position:static;">
+                    <span class="header__theme-toggle-thumb"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </main>
+    </div>
+
+  </div>
+
+  <!-- ═══ JavaScript ═══ -->
+  <script src="js/sidebar.js?v=5"></script>
+  <script src="js/counters.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/charts.js?v=5"></script>
+  <script src="js/app.js?v=5"></script>
+
+</body>
+</html>

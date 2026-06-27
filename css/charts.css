@@ -1,0 +1,107 @@
+/* ============================================
+   NEXUS DASHBOARD — Chart Containers
+   ============================================ */
+
+.chart-container {
+  position: relative;
+  width: 100%;
+}
+
+.chart-container canvas {
+  width: 100% !important;
+}
+
+/* ── Revenue Chart ── */
+.revenue-chart {
+  height: 300px;
+}
+
+.revenue-chart canvas {
+  height: 100% !important;
+}
+
+/* ── Doughnut Chart ── */
+.doughnut-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.doughnut-chart {
+  position: relative;
+  width: 220px;
+  height: 220px;
+  margin: 0 auto var(--space-lg);
+}
+
+.doughnut-chart canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.doughnut-center {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.doughnut-center__value {
+  font-family: var(--font-mono);
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.doughnut-center__label {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+/* ── Chart Legend ── */
+.chart-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md) var(--space-lg);
+  justify-content: center;
+}
+
+.chart-legend__item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.chart-legend__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.chart-legend__dot--cyan { background: var(--accent-cyan); box-shadow: 0 0 8px rgba(0, 229, 255, 0.4); }
+.chart-legend__dot--violet { background: var(--accent-violet); box-shadow: 0 0 8px rgba(124, 58, 237, 0.4); }
+.chart-legend__dot--magenta { background: var(--accent-magenta); box-shadow: 0 0 8px rgba(224, 64, 251, 0.4); }
+.chart-legend__dot--green { background: var(--accent-green); box-shadow: 0 0 8px rgba(34, 197, 94, 0.4); }
+
+.chart-legend__value {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  margin-left: 4px;
+  color: var(--text-primary);
+}
+
+/* ── Chart Tooltip Custom ── */
+.chart-tooltip {
+  background: rgba(10, 10, 15, 0.95) !important;
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 10px !important;
+  padding: 10px 14px !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5) !important;
+}
